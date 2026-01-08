@@ -1,0 +1,44 @@
+
+EN:
+  homename: Home
+  homeurl: /en/
+  notesname: Notes
+  notesurl: /notes_en/
+  billetsname: Blog
+  billetsurl: /posts/
+  recitsname: Fiction
+  recitsurl: /stories/
+  creativecommons: Made available under the
+  disclaimer: The opinions and ideas presented here are my own, and do not represent the opinion of my employer.
+  biourl: /bio_en/
+  bioname: About me
+  allnotes: All notes
+  allblog: All blog entries
+  allfiction: All fiction stories
+  feed: XML feed
+  portfoliourl: /portfolio_en/
+  portfolioname: Portfolio
+  language: en-CA
+
+
+FR:
+  homename: Accueil
+  homeurl: /fr/
+  notesname: Notes
+  notesurl: /notes/
+  billetsname: Blogue
+  billetsurl: /billets/
+  recitsname: Fiction
+  recitsurl: /recits/
+  creativecommons: Mis à disposition selon les termes de la
+  disclaimer: Les opinions et les idées présentées ici n'engagent que moi, et ne représentent pas l'opinion de mon employeur.
+  biourl: /bio_fr/
+  bioname: À propos de moi
+  allnotes: Toutes les notes
+  allblog: Tous les billets de blogue
+  allfiction: Tous les textes de fiction
+  feed: Fil XML
+  portfoliourl: /portfolio_fr/
+  portfolioname: Portfolio
+  language: fr-CA
+

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+
+    {% include meta.html %}
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+
+    <style>
+
+      h1 {
+          color: #333;
+      }
+      #output {
+          margin-top: 20px;
+          padding: 10px;
+      }
+      select, button {
+          margin: 10px 0;
+          padding: 5px;
+      }
+  </style>
+
+  </head>
+
+  <body>
+    {% assign pagelang = site.data.snippets[page.lang] %}
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header style="max-width:65ch;" class="masthead clearfix">
+          
+          {% if page.layout == "post" %}
+          {% assign posts=site.posts | where:"ref", page.ref | sort: 'lang' %}
+{% for post in posts %}
+  
+    <a class="selector" href="{{ post.url }}" class="{{ post.lang }}" {% if post.lang == page.lang %}style="border-bottom: 5px solid #222"{% endif %}>{{ post.lang }}</a>  
+  {% endfor %}
+        {% endif %}
+        
+        {% if page.layout == "page" %}
+        {% assign posts=site.pages | where:"ref", page.ref | sort: 'lang' %}
+  {% for post in posts %}
+  <a class="selector" href="{{ post.url }}" class="{{ post.lang }}" {% if post.lang == page.lang %}style="border-bottom: 5px solid #222"{% endif %}>{{ post.lang }}</a>  
+  {% endfor %}
+      {% endif %}
+
+          
+          <div class="site-name">
+            David Pepin
+
+
+          </div>
+
+          <nav>
+            
+
+
+   
+          
+           <a href="{{ pagelang.homeurl }}" {% if page.category == "Home" %}style="border-bottom: 5px solid #222"{% endif %}>
+        {{ pagelang.homename }}</a>
+    
+            <a href="{{ pagelang.billetsurl }}" {% if page.category == "Billets" %}style="border-bottom: 5px solid #222"{% endif %}>
+        {{ pagelang.billetsname }}</a>
+    
+      <a href="{{ pagelang.recitsurl }}" {% if page.category == "recits" %}style="border-bottom: 5px solid #222"{% endif %}>
+        {{ pagelang.recitsname }}</a>
+
+        <a href="{{ pagelang.notesurl }}" {% if page.category == "Notes" %}style="border-bottom: 5px solid #222"{% endif %}>
+          {{ pagelang.notesname }}</a>
+
+    
+        
+    
+
+</nav>
+
+   
+        </header>
+        
+      </div>
+    </div>
+    <!--
+    <div class="container">
+    {% include google-search.html %}
+  </div>
+  -->
+    <div id="main" role="main" class="container">
+      {{ content }}
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+        
+
+        <ul>
+        <li><a href="{{ pagelang.biourl }}">{{ pagelang.bioname }}</a></li>
+        <li><a href="https://www.davidpepin.ca/feed.xml">{{ pagelang.feed }}</a></li>
+        <li><a href="https://github.com/quidampepin">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/david-pepin-9b458613b/">LinkedIn</a></li>
+        <li><a href="https://twitter.com/quidampepin">Twitter</a></li>
+        <li><a href="https://mstdn.ca/@quidampepin">Mastodon</a></li>
+     
+          </ul>
+
+          <p>{{ pagelang.disclaimer }}</p>
+            
+          <p>&copy; David Pepin <br>{{ pagelang.creativecommons }} <a href=https://creativecommons.org/licenses/by/4.0/deed.fr>Licence Creative Commons Attribution 4.0 International</a>.</p>
+
+          
+        </footer>
+      </div>
+    </div>
+
+    {% include analytics.html %}
+  </body>
+
+  <script>
+    const majorScale = ["I", "ii", "iii", "IV", "V", "vi", "vii°"];
+    const minorScale = ["i", "ii°", "III", "iv", "v", "VI", "VII"];
+
+    const majorProgressions = [
+["I", "V", "vi", "IV"],
+["I", "IV", "V"],
+["ii", "V", "I"],
+["I", "vi", "IV", "V"],
+["I", "V", "vi", "iii", "IV", "I", "IV", "V"],
+["I", "IV", "vi", "V"],
+["I", "V", "vi", "IV", "I", "V", "IV", "V"],
+["I", "iii", "IV", "vi"],
+["I", "vi", "ii", "V"],
+["I", "IV", "I", "V"],
+["I", "V", "IV", "V"],
+["ii", "IV", "V", "I"],
+["I", "V", "vi", "iii", "IV", "I", "ii", "V"],
+["I", "iii", "vi", "IV"],
+["I", "V", "IV", "I"],
+["I", "IV", "ii", "V"],
+["I", "vi", "iii", "V"],
+["I", "IV", "V", "vi"],
+["I", "V", "ii", "IV"],
+["I", "iii", "IV", "V"],
+["I", "vi", "IV", "ii", "V"],
+["I", "IV", "I", "V", "vi", "IV", "ii", "V"],
+["I", "V", "vi", "IV", "ii", "V", "I"],
+["I", "iii", "vi", "ii", "V"],
+["I", "IV", "V", "iii", "vi"],
+["IV", "V", "I", "vi"],
+["vi", "IV", "I", "V"],
+["V", "vi", "IV", "I"],
+["iii", "IV", "I", "V"],
+["IV", "I", "V", "vi"],
+["V", "IV", "I"],
+["ii", "IV", "I", "V"]
+];
+
+const minorProgressions = [
+["i", "iv", "v"],
+["i", "VI", "III", "VII"],
+["i", "iv", "VII", "III"],
+["i", "v", "VI", "v"],
+["i", "VII", "VI", "VII"],
+["i", "VI", "VII", "v"],
+["i", "iv", "VII", "v"],
+["i", "III", "VII", "iv"],
+["i", "v", "iv", "i"],
+["i", "VI", "III", "iv"],
+["i", "iv", "v", "i"],
+["i", "VII", "VI", "v"],
+["i", "ii°", "v", "i"],
+["i", "iv", "III", "VII"],
+["i", "VI", "iv", "v"],
+["i", "v", "VI", "III"],
+["i", "iv", "i", "v"],
+["i", "VII", "III", "VI"],
+["i", "III", "iv", "v"],
+["i", "ii°", "V", "i"],
+["i", "iv", "VII", "VI"],
+["i", "v", "iv", "v"],
+["i", "VI", "iv", "III", "VII"],
+["i", "iv", "v", "VI", "III", "VII"],
+["i", "III", "VI", "iv", "v", "i"],
+["iv", "i", "v", "VI"],
+["VI", "VII", "i", "iv"],
+["v", "i", "iv", "VII"],
+["iv", "VII", "i", "III"],
+["ii°", "V", "i"],
+["VII", "i", "VI", "v"],
+["III", "iv", "i", "v"],
+["iv", "i", "VII", "III"],
+["VII", "iv", "i", "v"],
+["VI", "ii°", "i", "v"]
+];
+
+    const keyMap = {
+        "C": ["C", "D", "E", "F", "G", "A", "B"],
+        "C#": ["C#", "D#", "E#", "F#", "G#", "A#", "B#"],
+        "D": ["D", "E", "F#", "G", "A", "B", "C#"],
+        "D#": ["D#", "E#", "F##", "G#", "A#", "B#", "C##"],
+        "E": ["E", "F#", "G#", "A", "B", "C#", "D#"],
+        "F": ["F", "G", "A", "Bb", "C", "D", "E"],
+        "F#": ["F#", "G#", "A#", "B", "C#", "D#", "E#"],
+        "G": ["G", "A", "B", "C", "D", "E", "F#"],
+        "G#": ["G#", "A#", "B#", "C#", "D#", "E#", "F##"],
+        "A": ["A", "B", "C#", "D", "E", "F#", "G#"],
+        "A#": ["A#", "B#", "C##", "D#", "E#", "F##", "G##"],
+        "B": ["B", "C#", "D#", "E", "F#", "G#", "A#"],
+        "C minor": ["C", "D", "Eb", "F", "G", "Ab", "Bb"],
+        "C# minor": ["C#", "D#", "E", "F#", "G#", "A", "B"],
+        "D minor": ["D", "E", "F", "G", "A", "Bb", "C"],
+        "D# minor": ["D#", "E#", "F#", "G#", "A#", "B", "C#"],
+        "E minor": ["E", "F#", "G", "A", "B", "C", "D"],
+        "F minor": ["F", "G", "Ab", "Bb", "C", "Db", "Eb"],
+        "F# minor": ["F#", "G#", "A", "B", "C#", "D", "E"],
+        "G minor": ["G", "A", "Bb", "C", "D", "Eb", "F"],
+        "G# minor": ["G#", "A#", "B", "C#", "D#", "E", "F#"],
+        "A minor": ["A", "B", "C", "D", "E", "F", "G"],
+        "A# minor": ["A#", "B#", "C#", "D#", "E#", "F#", "G#"],
+        "B minor": ["B", "C#", "D", "E", "F#", "G", "A"]
+    };
+
+    function getChordName(scale, index, chord, isMinorKey) {
+        let note = scale[index];
+        if (isMinorKey) {
+            if (["i", "iv", "v"].includes(chord)) {
+                note += "m";
+            } else if (chord === "ii°") {
+                note += "dim";
+            } else if (chord === "V") {
+                note += "M";
+            }
+        } else {
+            if (["ii", "iii", "vi"].includes(chord)) {
+                note += "m";
+            } else if (chord === "vii°") {
+                note += "dim";
+            }
+        }
+        return note;
+    }
+
+    function getChordIndex(scale, chord) {
+        if (chord === "V" && scale === minorScale) {
+            return 4;
+        }
+        return scale.indexOf(chord);
+    }
+
+    function getProgressions(key, scaleType) {
+        const isMinorKey = scaleType === "minor";
+        const scale = isMinorKey ? minorScale : majorScale;
+        const progressions = isMinorKey ? minorProgressions : majorProgressions;
+        const selectedProgressions = progressions.sort(() => 0.5 - Math.random()).slice(0, 3);
+
+        const keyNotes = keyMap[key];
+        return selectedProgressions.map(progression => {
+            const translatedProgression = progression.map(chord => {
+                const index = getChordIndex(scale, chord);
+                return getChordName(keyNotes, index, chord, isMinorKey);
+            });
+            return [progression, translatedProgression];
+        });
+    }
+
+    function generateProgressions() {
+        const key = document.getElementById('key').value;
+        const scaleType = document.getElementById('scale').value;
+
+        const progressions = getProgressions(key, scaleType);
+        
+        let output = '';
+        progressions.forEach(([numeral, chords]) => {
+            output += `${numeral.join(' - ')}<br>`;
+            output += `${chords.join(' - ')}<br><br>`;
+        });
+
+        document.getElementById('output').innerHTML = output;
+    }
+</script>
+</html>

@@ -1,2 +1,2 @@
-# erichutt.github.io
-Portfolio and CV website for Eric Hutt
+# New project: pesonal publishing space
+I used Jekyll Now to build it. 
